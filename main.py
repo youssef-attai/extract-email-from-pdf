@@ -25,18 +25,34 @@ def extract_emails_from_pdf(pdf_path):
 
 if __name__ == "__main__":
     pdf_directory = input("Enter the path to the directory containing PDF files: ")
+    pdf_directory = os.path.expanduser(pdf_directory)  # Expand ~ in the directory path
+
+    # Initialize a list to store the filenames of PDFs without emails
+    pdfs_without_emails = []
+
+    # Initialize a list to store the extracted emails
+    extracted_emails = []
 
     # Loop over all PDF files in the directory
     for filename in os.listdir(pdf_directory):
         if filename.endswith('.pdf'):
             pdf_path = os.path.join(pdf_directory, filename)
 
-            extracted_emails = extract_emails_from_pdf(pdf_path)
+            emails = extract_emails_from_pdf(pdf_path)
 
-            # Print the extracted emails
-            if extracted_emails:
-                print(f"Extracted Emails from {filename}:")
-                for email in extracted_emails:
-                    print(email)
-            else:
-                print(f"No emails found in {filename}.")
+            # Add the extracted emails to the list
+            extracted_emails.extend(emails)
+
+            # Check if any emails were extracted
+            if not emails:
+                pdfs_without_emails.append(filename)
+
+    # Write the extracted emails to a file
+    with open("extracted_emails.txt", "w") as email_file:
+        for email in extracted_emails:
+            email_file.write(email + "\n")
+
+    # Write the filenames of PDFs without emails to a file
+    with open("pdfs_without_emails.txt", "w") as pdf_file:
+        for filename in pdfs_without_emails:
+            pdf_file.write(filename + "\n")
