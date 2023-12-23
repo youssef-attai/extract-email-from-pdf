@@ -24,7 +24,7 @@ def extract_emails_from_pdf(pdf_path):
     return emails
 
 if __name__ == "__main__":
-    pdf_directory = '/path/to/pdf/directory'  # Replace with the actual directory path
+    pdf_directory = input("Enter the path to the directory containing PDF files: ")
 
     # Loop over all PDF files in the directory
     for filename in os.listdir(pdf_directory):
