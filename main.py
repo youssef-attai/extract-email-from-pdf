@@ -1,5 +1,6 @@
 import re
 import PyPDF2
+import os
 
 def extract_emails_from_pdf(pdf_path):
     emails = set()
@@ -23,14 +24,19 @@ def extract_emails_from_pdf(pdf_path):
     return emails
 
 if __name__ == "__main__":
-    pdf_path = 'test.pdf'
+    pdf_directory = '/path/to/pdf/directory'  # Replace with the actual directory path
 
-    extracted_emails = extract_emails_from_pdf(pdf_path)
+    # Loop over all PDF files in the directory
+    for filename in os.listdir(pdf_directory):
+        if filename.endswith('.pdf'):
+            pdf_path = os.path.join(pdf_directory, filename)
 
-    # Print the extracted emails
-    if extracted_emails:
-        print("Extracted Emails:")
-        for email in extracted_emails:
-            print(email)
-    else:
-        print("No emails found in the PDF.")
+            extracted_emails = extract_emails_from_pdf(pdf_path)
+
+            # Print the extracted emails
+            if extracted_emails:
+                print(f"Extracted Emails from {filename}:")
+                for email in extracted_emails:
+                    print(email)
+            else:
+                print(f"No emails found in {filename}.")
