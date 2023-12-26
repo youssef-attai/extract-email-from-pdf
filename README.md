@@ -1,6 +1,6 @@
 # Extract Emails From PDFs
 
-This is a simple script to extract emails from PDFs. I made it specifically to facilitate the process of extracting emails from resumes for my job. It uses [PyPDF2](https://github.com/py-pdf/pypdf) to read the PDFs and [regular expressions](https://docs.python.org/3/library/re.html) to find the emails.
+This is a simple script to extract emails from PDFs. I made it specifically to facilitate the process of extracting emails from resumes in my job. It uses [PyPDF2](https://github.com/py-pdf/pypdf) to read the PDFs and [regular expressions](https://docs.python.org/3/library/re.html) to find the emails.
 
 ## Installation
 
