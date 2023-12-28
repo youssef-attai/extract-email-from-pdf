@@ -7,7 +7,7 @@ This is a simple script to extract emails from PDFs. I made it specifically to f
 Clone the repository and install the requirements:
 
 ```bash
-git clone https://github.com/youssef-attai/extract-email-from-pdf.git
+git clone https://github.com/youssef-attai/extract-emails-from-pdfs.git
 cd extract-emails-from-pdfs
 pip install -r requirements.txt
 ```
